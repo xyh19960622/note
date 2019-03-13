@@ -340,7 +340,7 @@
 ```
 ## 3.2 字典推导式
 ```
- d = {key:value for (key,value) in iterable}
+ d = {key:value for (key,value) in iterable.items()}
 ```
 ## 3.3 请反转字符串 "aStr"?
 ```
@@ -428,7 +428,7 @@ c. 字典 dict 、 集合 set
 
 ## 4.3 python如何实现单例模式?请写出两种实现方式?
 第一种方法:使用装饰器
-```
+```python
     def singleton(cls):
         instances = {}
         def wrapper(*args, **kwargs):
@@ -444,8 +444,8 @@ c. 字典 dict 、 集合 set
     print foo1 is foo2 #True
 ```
 第二种方法：使用基类
-New 是真正创建实例对象的方法，所以重写基类的new 方法，以此保证创建对象的时候只生成一个实例
-```
+New 是真正创建实例对象的方法，所以重写基类的new 方法，以此保证创建对象的时候只生成一个实例 hasattr(cls,'attr'):判断一个类里是否有attr这个属性,super()：调用父类
+```python
     class Singleton(object):
         def __new__(cls,*args,**kwargs):
             if not hasattr(cls,'_instance'):
@@ -461,24 +461,27 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
     print foo1 is foo2 #True
 ```
 第三种方法：元类，元类是用于创建类对象的类，类对象创建实例对象时一定要调用call方法，因此在调用call时候保证始终只创建一个实例即可，type是python的元类
-```
+```python
     class Singleton(type):
         def __call__(cls,*args,**kwargs):
             if not hasattr(cls,'_instance'):
                 cls._instance = super(Singleton,cls).__call__(*args,**kwargs)
             return cls._instance
 ```
-```
+
+```python
     class Foo(object):
         __metaclass__ = Singleton
-    
+
     foo1 = Foo()
     foo2 = Foo()
     print foo1 is foo2 #True
 
 ```
-## 4.4 反转一个整数，例如-123 --> -321 
-```
+
+## 4.4 反转一个整数，例如-123 --> -321
+
+```python
     class Solution(object):
         def reverse(self,x):
             if -10<x<10:
@@ -497,9 +500,12 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
         reverse_int = s.reverse(-120)
         print(reverse_int)
 ```
+
 ## 4.5 设计实现遍历目录与子目录，抓取.pyc文件
+
 第一种方法：
-```
+
+```python
     import os
 
     def getFiles(dir,suffix):
@@ -511,9 +517,10 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
                     res.append(os.path.join(root,filename))
 
         print(res)
-    
+
     getFiles("./",'.pyc')
 ```
+
 第二种方法：
 ```
     import os
@@ -532,21 +539,25 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
         pick(obj)
             elif os.path.isdir(obj):
                 scan_path(obj)
-        
     if __name__=='__main__':
         path = input('输入目录')
         scan_path(path)
 ```
+
 ## 4.6 一行代码实现1-100之和
-```
+
+```python
     count = sum(range(0,101))
     print(count)
 ```
 
 # Python高级
+
 ## 3 函数
+
 ## 3.6 手写一个判断时间的装饰器
-```
+
+```python
 import datetime
 
 
@@ -578,10 +589,12 @@ if __name__ == "__main__":
     test("backbp")
 ```
 ## 3.7 使用Python内置的filter()方法来过滤？
-```
+
+```python
     [x for x in filter(lambda x: x % 2 == 0, range(10))] 
 ```
 ## 4设计模式
+
 ## 4.1 对设计模式的理解，简述你了解的设计模式？
 设计模式是经过总结，优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码，反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。
 常见的是工厂模式和单例模式
