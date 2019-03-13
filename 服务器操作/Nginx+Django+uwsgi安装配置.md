@@ -17,10 +17,13 @@ def application(env, start_response):
     start_response('200 OK', [('Content-Type','text/html')])
     return [b"Hello World"] # python3
 ```
+
 3. 运行 uwsgi --http :8000 --wsgi-file test.py
 4. 访问http://ip:8000 可以看见helloWorld则说明安装成功
+
 # 创建uwsgi配置文件
-```
+
+```python
 [uwsgi]
 # 项目目录
 chdir=/home/xyh/xyh/Cauchy
@@ -50,8 +53,8 @@ post-buffering=4096
 # 设置日志目录  先创建
 daemonize=/home/xyh/xyh/Cauchy/uwsgi.log
 ```
-2. 关闭nginx `killall -9 nginx`  若没有该命令则`yum install psmisc`
-3. 运行uwsgi   uwsgi --ini cauchy.ini
+1. 关闭nginx `killall -9 nginx`  若没有该命令则`yum install psmisc`
+2. 运行uwsgi   uwsgi --ini cauchy.ini
 # 修改Nginx配置文件
 1. cd /usr/local/nginx/conf
 2. vi nginx.conf
