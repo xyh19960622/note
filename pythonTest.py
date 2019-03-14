@@ -22,6 +22,7 @@ def fun_name(arg1,arg2,arg3):
     print("123")
 
 if __name__ == '__main__':
-    d = {"s":1,"z":2}
-    fun_name("xx",'a',d)
+    # d = {"s":1,"z":2}
+    # fun_name("xx",'a',d)
+    print(int(7/3))
 
