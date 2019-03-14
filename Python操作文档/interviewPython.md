@@ -161,8 +161,8 @@
     *   Django
         *   2.1、什么是wsgi,uwsgi,uWSGI？
         *   2.2、CORS和CSRF的区别？
-        *   2.3、Session、Cookie、JWT的理解 
-        *   2.4、简述Django请求生命周期 
+        *   2.3、Session、Cookie、JWT的理解
+        *   2.4、简述Django请求生命周期
         *   2.5、Django 、Flask、Tornado的对比
         *   2.6、用的restframework完成api发送时间时区
         *   2.7、nginx,tomcat,apache 都是什么?
@@ -276,7 +276,8 @@
 
 # Python基础
 ## 1.1 有一个jsonline格式的文件file.txt 大小约为10K
-```
+
+```python
     def get_lines():
         l = []
         with open('file.txt','rb) as f:
@@ -288,8 +289,10 @@
         for e in get_lines():
             process(e) #处理每一行数据
 ```
+
 现在要处理一个大小为10G的文件，但是内存只有4G，如果在只修改get_lines 函数而其他代码保持不变的情况下，应该如何实现？需要考虑的问题都有那些？
-```
+
+```python
     def get_lines():
         l = []
         with open('file.txt','rb') as f:
@@ -297,9 +300,11 @@
         l.append(data)
         yield l
 ```
+
 要考虑的问题有：内存只有4G无法一次性读入10G文件，需要分批读入分批读入数据要记录每次读入数据的位置。分批每次读取数据的大小，太小会在读取操作花费过多时间。
 ## 1.2 补充缺失的代码
-```
+
+```python
     def print_directory_contents(sPath):
     """
     这个函数接收文件夹的名称作为输入参数
@@ -314,9 +319,11 @@
         else:
             print(sChildPath)
 ```
+
 # 模块与包
 ## 2.1 输入日期， 判断这一天是这一年的第几天？
-```
+
+```python
     import datetime
     def dayofyear():
         year = input("请输入年份: ")
@@ -326,28 +333,38 @@
         date2 = datetime.date(year=int(year),month=1,day=1)
         return (date1-date2).days+1
 ```
+
 ## 2.2 打乱一个排好序的list对象alist？
-```
+
+```python
     import random
     alist = [1,2,3,4,5]
     random.shuffle(alist)
     print(alist)
 ```
+
 # 数据类型
 ## 3.1 现有字典 d= {'a':24,'g':52,'i':12,'k':33}请按value值进行排序?
-```
+
+```python
     sorted(d.items(),key=lambda x:x[1])
 ```
+
 ## 3.2 字典推导式
-```
+
+```python
  d = {key:value for (key,value) in iterable.items()}
 ```
+
 ## 3.3 请反转字符串 "aStr"?
-```
+
+```python
     print("aStr"[::-1])
 ```
+
 ## 3.4 将字符串 "k:1 |k1:2|k2:3|k3:4"，处理成字典 {k:1,k1:2,...}
-```
+
+```python
     str1 = "k:1|k1:2|k2:3|k3:4"
     def str2dict(str1):
         dict1 = {}
@@ -356,24 +373,32 @@
             dict1[key] = value
         return dict1
 ```
+
 ## 3.5 请按alist中元素的age由大到小排序
-```
+
+```python
     alist = [{'name':'a','age':20},{'name':'b','age':30},{'name':'c','age':25}]
     def sort_by_age(list1):
         return sorted(alist,key=lambda x:x['age'],reverse=True)
 ```
+
 ## 3.6 下面代码的输出结果将是什么？
-```
+
+```python
     list = ['a','b','c','d','e']
     print(list[10:])
 ```
+
 代码将输出[],不会产生IndexError错误，就像所期望的那样，尝试用超出成员的个数的index来获取某个列表的成员。例如，尝试获取list[10]和之后的成员，会导致IndexError。然而，尝试获取列表的切片，开始的index超过了成员个数不会产生IndexError，而是仅仅返回一个空列表。这成为特别让人恶心的疑难杂症，因为运行的时候没有错误产生，导致Bug很难被追踪到。
 ## 3.7 写一个列表生成式，产生一个公差为11的等差数列
-```
+
+```python
     print([x*11 for x in range(10)])
 ```
+
 ## 3.8 给定两个列表，怎么找出他们相同的元素和不同的元素？
-```
+
+```python
     list1 = [1,2,3]
     list2 = [3,4,5]
     set1 = set(list1)
@@ -381,27 +406,35 @@
     print(set1 & set2)
     print(set1 ^ set2)
 ```
+
 ## 3.9 请写出一段python代码实现删除list里面的重复元素？
-```
+
+```python
     l1 = ['b','c','d','c','a','a']
     l2 = list(set(l1))
     print(l2)
 ```
+
 用list类的sort方法:
-```
+
+```python
     l1 = ['b','c','d','c','a','a']
     l2 = list(set(l1))
     l2.sort(key=l1.index)
     print(l2)
 ```
+
 也可以这样写:
-```
+
+```python
     l1 = ['b','c','d','c','a','a']
     l2 = sorted(set(l1),key=l1.index)
     print(l2)
 ```
+
 也可以用遍历：
-```
+
+```python
     l1 = ['b','c','d','c','a','a']
     l2 = []
     for i in l1:
@@ -409,11 +442,14 @@
             l2.append(i)
     print(l2)
 ```
+
 ## 3.10 给定两个list A，B ,请用找出A，B中相同与不同的元素
-```
+
+```python
     A,B 中相同元素： print(set(A)&set(B))
     A,B 中不同元素:  print(set(A)^set(B))
 ```
+
 # 企业面试题
 ## 4.1 python新式类和经典类的区别？
 a. 在python里凡是继承了object的类，都是新式类
@@ -428,6 +464,7 @@ c. 字典 dict 、 集合 set
 
 ## 4.3 python如何实现单例模式?请写出两种实现方式?
 第一种方法:使用装饰器
+
 ```python
     def singleton(cls):
         instances = {}
@@ -443,8 +480,10 @@ c. 字典 dict 、 集合 set
     foo2 = Foo()
     print foo1 is foo2 #True
 ```
+
 第二种方法：使用基类
 New 是真正创建实例对象的方法，所以重写基类的new 方法，以此保证创建对象的时候只生成一个实例 hasattr(cls,'attr'):判断一个类里是否有attr这个属性,super()：调用父类
+
 ```python
     class Singleton(object):
         def __new__(cls,*args,**kwargs):
@@ -460,7 +499,9 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
 
     print foo1 is foo2 #True
 ```
+
 第三种方法：元类，元类是用于创建类对象的类，类对象创建实例对象时一定要调用call方法，因此在调用call时候保证始终只创建一个实例即可，type是python的元类
+
 ```python
     class Singleton(type):
         def __call__(cls,*args,**kwargs):
@@ -522,7 +563,8 @@ New 是真正创建实例对象的方法，所以重写基类的new 方法，以
 ```
 
 第二种方法：
-```
+
+```python
     import os
     
     def pick(obj):
@@ -587,12 +629,14 @@ def test(name):
 
 if __name__ == "__main__":
     test("backbp")
-```
+
+```python
 ## 3.7 使用Python内置的filter()方法来过滤？
 
 ```python
     [x for x in filter(lambda x: x % 2 == 0, range(10))] 
 ```
+
 ## 4设计模式
 
 ## 4.1 对设计模式的理解，简述你了解的设计模式？
@@ -600,7 +644,8 @@ if __name__ == "__main__":
 常见的是工厂模式和单例模式
 
 ## 4.2 请手写一个单例
-```
+
+```python
     #python2
     class A(object):
         __instance = None
@@ -611,6 +656,7 @@ if __name__ == "__main__":
             else:
                 return cls.__instance
 ```
+
 ## 4.3 单例模式的应用场景有那些？
 单例模式应用的场景一般发现在以下条件下：
 资源共享的情况下，避免由于资源操作时导致的性能或损耗等，如日志文件，应用配置。
@@ -619,7 +665,7 @@ if __name__ == "__main__":
 ## 4.5 对装饰器的理解，并写出一个计时器记录方法执行性能的装饰器？
 装饰器本质上是一个python函数，它可以让其他函数在不需要做任何代码变动的前提下增加额外功能，装饰器的返回值也是一个函数对象。
 
-```
+```python
     import time
     def timeit(func):
         def wrapper():
@@ -632,12 +678,13 @@ if __name__ == "__main__":
     def foo():
         print('in foo()'foo())
 ```
+
 ## 4.6 解释以下什么是闭包？
 在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，那么将这个函数以及用到的一些变量称之为闭包。
 
 ## 4.7 函数装饰器有什么作用？
 装饰器本质上是一个python函数，它可以在让其他函数在不需要做任何代码的变动的前提下增加额外的功能。装饰器的返回值也是一个函数的对象，它经常用于有切面需求的场景。比如：插入日志，性能测试，事务处理，缓存。权限的校验等场景，有了装饰器就可以抽离出大量的与函数功能本身无关的雷同代码并发并继续使用。
-##  4.8 生成器，迭代器的区别？
+## 4.8 生成器，迭代器的区别？
 迭代器是一个更抽象的概念，任何对象，如果它的类有next方法和iter方法返回自己本身，对于string,list,dict,tuple等这类容器对象，使用for循环遍历是很方便的，在后台for语句对容器对象调用iter()函数，iter()是python的内置函数，iter()会返回一个定义了next()方法的迭代器对象，它在容器中逐个访问容器内元素，next()也是python的内置函数，在没有后续元素时，next()会抛出一个StopIteration异常。
 生成器（Generator）是创建迭代器的简单而强大的工具。它们写起来就像是正规的函数，只是在需要返回数据的时候使用yield语句。每次next()被调用时，生成器会返回它脱离的位置（它记忆语句最后一次执行的位置和所有的数据值）
 区别： 生成器能做到迭代器能做的所有事，而且因为自动创建iter()和next()方法，生成器显得特别简洁，而且生成器也是高效的，使用生成器表达式取代列表解析可以同时节省内存。除了创建和保存程序状态的自动方法，当发生器终结时，还会自动抛出StopIteration异常。
@@ -645,15 +692,19 @@ if __name__ == "__main__":
     X= (fo ri in ramg(10))
     X是 generator类型
 ## 4.10 请用一行代码 实现将1-N 的整数列表以3为单位分组
-```
+
+```python
     print ([[x for x in range(1,100)] [i:i+3] for i in range(0,len(list_a),3)])
 ```
+
 ## 4.11 Python中yield的用法》
 yield就是保存当前程序执行状态。你用for循环的时候，每次取一个元素的时候就会计算一次。用yield的函数叫generator,和iterator一样，它的好处是不用一次计算所有元素，而是用一次算一次，可以节省很多空间，generator每次计算需要上一次计算结果，所以用yield,否则一return，上次计算结果就没了
 ## 4.20 用一行代码生成[1,4,9,16,25,36,49,64,81,100]
-```
+
+```python
     print([x*x for x in range(1, 11)])
 ```
+
 ## 7系统编程
 ## 7.1 进程总结
 进程：程序运行在操作系统上的一个实例，就称之为进程。进程需要相应的系统资源：内存、时间片、pid。
@@ -661,15 +712,18 @@ yield就是保存当前程序执行状态。你用for循环的时候，每次取
 首先要导入multiprocessing中的Process：
 创建一个Process对象;
 创建Process对象时，可以传递参数;
-```
+
+```python
     p = Process(target=XXX,args=(tuple,),kwargs={key:value})
     target = XXX 指定的任务函数，不用加(),
     args=(tuple,)kwargs={key:value}给任务函数传递的参数
 ```
+
 使用start()启动进程
 结束进程
 给子进程指定函数传递参数Demo
-```
+
+```python
     import os
     from mulitprocessing import Process
     import time
@@ -689,6 +743,7 @@ yield就是保存当前程序执行状态。你用for循环的时候，每次取
         p.terminate()
         p.join()
 ```
+
 注意：进程间不共享全局变量
 进程之间的通信-Queue
 在初始化Queue()对象时（例如q=Queue(),若在括号中没有指定最大可接受的消息数量，获数量为负值时，那么就代表可接受的消息数量没有上限一直到内存尽头）
@@ -703,7 +758,8 @@ Queue.put(item,[block[,timeout]]):将item消息写入队列，block默认值为T
 如果block值为False，消息队列如果没有空间可写入，则会立刻抛出"Queue.Full"异常;
 Queue.put_nowait(item):相当Queue.put(item,False)
 进程间通信Demo:
-```
+
+```python
     from multiprocessing import Process.Queue
     import os,time,random
     #写数据进程执行的代码：
@@ -737,8 +793,10 @@ Queue.put_nowait(item):相当Queue.put(item,False)
         print('')
         print('所有数据都写入并且读完')
 ```
+
     进程池Pool
-```
+
+```python
         #coding:utf-8
         from multiprocessing import Pool
         import os,time,random
@@ -759,10 +817,12 @@ Queue.put_nowait(item):相当Queue.put(item,False)
         po.join()
         print("----end----")
 ```
+
 进程池中使用Queue
 如果要使用Pool创建进程，就需要使用multiprocessing.Manager()中的Queue(),而不是multiprocessing.Queue(),否则会得到如下的错误信息：
 RuntimeError： Queue objects should only be shared between processs through inheritance
-```
+
+```python
         from multiprocessing import Manager,Pool
         import os,time,random
         def reader(q):
@@ -785,6 +845,7 @@ RuntimeError： Queue objects should only be shared between processs through inh
             po.join()
             print("(%s)End"%os.getpid())
 ```
+
 ## 7.2 谈谈你对多进程，多线程，以及协程的理解，项目是否用？
 这个问题被问的概念相当之大，
 进程：一个运行的程序（代码）就是一个进程，没有运行的代码叫程序，进程是系统资源分配的最小单位，进程拥有自己独立的内存空间，所有进程间数据不共享，开销大。
@@ -800,7 +861,8 @@ RuntimeError： Queue objects should only be shared between processs through inh
 5、 不影响主线程逻辑
 
 ## 7.4 多线程共同操作同一个数据互斥锁同步？
-```
+
+```python
     import threading
     import time
     class MyThread(threading.Thread):
@@ -822,6 +884,7 @@ RuntimeError： Queue objects should only be shared between processs through inh
     if __name__=="__main__":
         test()
 ```
+
 ## 7.5 什么是多线程竞争？
 线程是非独立的，同一个进程里线程是数据共享的，当各个线程访问数据资源时会出现竞争状态即：数据几乎同步会被多个线程占用，造成数据混乱，即所谓的线程不安全
 那么怎么解决多线程竞争问题？---锁
@@ -832,7 +895,8 @@ RuntimeError： Queue objects should only be shared between processs through inh
  一、 setDaemon(False)
 当一个进程启动之后，会默认产生一个主线程，因为线程是程序执行的最小单位，当设置多线程时，主线程会创建多个子线程，在Python中，默认情况下就是setDaemon(False),主线程执行完自己的任务以后，就退出了，此时子线程会继续执行自己的任务，直到自己的任务结束。
 例子
-```
+
+```python
     import threading 
     import time
     
@@ -851,10 +915,12 @@ RuntimeError： Queue objects should only be shared between processs through inh
     ---主线程--结束
     ---子线程结束---
 ```
+
 二、 setDaemon（True)
 当我们使用setDaemon(True)时，这是子线程为守护线程，主线程一旦执行结束，则全部子线程被强制终止
 例子
-```
+
+```python
     import threading
     import time
     def thread():
@@ -871,12 +937,14 @@ RuntimeError： Queue objects should only be shared between processs through inh
     #执行结果
     ---主线程结束--- #只有主线程结束，子线程来不及执行就被强制结束
 ```
+
 三、 join（线程同步)
 join 所完成的工作就是线程同步，即主线程任务结束以后，进入堵塞状态，一直等待所有的子线程结束以后，主线程再终止。
 当设置守护线程时，含义是主线程对于子线程等待timeout的时间将会杀死该子线程，最后退出程序，所以说，如果有10个子线程，全部的等待时间就是每个timeout的累加和，简单的来说，就是给每个子线程一个timeou的时间，让他去执行，时间一到，不管任务有没有完成，直接杀死。
 没有设置守护线程时，主线程将会等待timeout的累加和这样的一段时间，时间一到，主线程结束，但是并没有杀死子线程，子线程依然可以继续执行，直到子线程全部结束，程序退出。
 例子
-```
+
+```python
     import threading
     import time
 
@@ -896,6 +964,7 @@ join 所完成的工作就是线程同步，即主线程任务结束以后，进
     if __name__=='__main___':
         main()
 ```
+
 ## 7.7 解释以下什么是锁，有哪几种锁？
 锁(Lock)是python提供的对线程控制的对象。有互斥锁，可重入锁，死锁。
 
@@ -964,17 +1033,22 @@ asyncio这个库就是使用python的yield这个可以打断保存当前函数�
 不能在应用创建后撤销注册一个蓝图而不销毁整个应用对象。
 使用蓝图的三个步骤
 1.创建一个蓝图对象
-```
+
+```python
 blue = Blueprint("blue",__name__)
 ```
+
 2.在这个蓝图对象上进行操作，例如注册路由、指定静态文件夹、注册模板过滤器...
-```
+
+```python
 @blue.route('/')
 def blue_index():
     return "Welcome to my blueprint"
 ```
+
 3.在应用对象上注册这个蓝图对象
-```
+
+```python
 app.register_blueprint(blue,url_prefix="/blue")
 ```
 
@@ -1039,7 +1113,8 @@ Session 和Cookie的区别
 
 ## 2.6 用的restframework完成api发送时间时区
 当前的问题是用django的rest framework模块做一个get请求的发送时间以及时区信息的api
-```
+
+```python
 class getCurrenttime(APIView):
     def get(self,request):
         local_time = time.localtime()
@@ -1047,6 +1122,7 @@ class getCurrenttime(APIView):
         temp = {'localtime':local_time,'timezone':time_zone}
         return Response(temp)
 ```
+
 ## 2.7 nginx,tomcat,apach到都是什么？
 Nginx（engine x)是一个高性能的HTTP和反向代理服务器，也是 一个IMAP/POP3/SMTP服务器，工作在OSI七层，负载的实现方式：轮询，IP_HASH,fair,session_sticky.
 Apache HTTP Server是一个模块化的服务器，源于NCSAhttpd服务器
@@ -1092,35 +1168,47 @@ qq登录，在我们的项目中分为了三个接口，
 ## 2.12 django中间件的使用？
 Django在中间件中预置了六个方法，这六个方法的区别在于不同的阶段执行，对输入或输出进行干预，方法如下：
 1.初始化：无需任何参数，服务器响应第一个请求的时候调用一次，用于确定是否启用当前中间件
-```
+
+```python
 def __init__():
     pass
 ```
+
 2.处理请求前：在每个请求上调用，返回None或HttpResponse对象。
-```
+
+```python
 def process_request(request):
     pass
 ```
+
 3.处理视图前:在每个请求上调用，返回None或HttpResponse对象。
-```
+
+```python
 def process_view(request,view_func,view_args,view_kwargs):
     pass
 ```
+
 4.处理模板响应前：在每个请求上调用，返回实现了render方法的响应对象。
-```
+
+```python
 def process_template_response(request,response):
     pass
 ```
+
 5.处理响应后：所有响应返回浏览器之前被调用，在每个请求上调用，返回HttpResponse对象。
-```
+
+```python
 def process_response(request,response):
     pass
 ```
+
 6.异常处理：当视图抛出异常时调用，在每个请求上调用，返回一个HttpResponse对象。
-```
+
+```python
 def process_exception(request,exception):
     pass
 ```
+
 ## 2.13 谈一下你对uWSGI和nginx的理解？
 1.uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。Nginx中HttpUwsgiModule的作用是与uWSGI服务器进行交换。WSGI是一种Web服务器网关接口。它是一个Web服务器（如nginx，uWSGI等服务器）与web应用（如用Flask框架写的程序）通信的一种规范。
 要注意WSGI/uwsgi/uWSGI这三个概念的区分。

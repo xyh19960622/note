@@ -9,5 +9,19 @@ def debug(func):
 def say(something,a,b):
     print("hello {}!".format(something))
 
+def singontong(func): 
+    def wrapper(*args,**kwargs):
+        print("方法名：{}".format(func.__name__))
+        print(**kwargs)
+        print("prepare and say...")
+        return func(*args,**kwargs)
+    return wrapper
+
+@singontong
+def fun_name(arg1,arg2,arg3):
+    print("123")
+
 if __name__ == '__main__':
-    say("xx",'a','b')
+    d = {"s":1,"z":2}
+    fun_name("xx",'a',d)
+

@@ -35,3 +35,14 @@
 1. 排序 (默认按行排序 axis: 0 列 1 行)：`np.sort(x) np.sort(X,axis=1) np.sort(X,axis=0)`
 2. 对矩阵x进行乱序：`np.random.shuffle(x)`
 3. 返回矩阵x排序后的下标：`np.argsort(x)`
+
+```python
+def code():
+    print("123456")
+    print"123456")
+    print("123456")
+    print("123456")
+    print("123456")
+    print("python")
+
+```    
