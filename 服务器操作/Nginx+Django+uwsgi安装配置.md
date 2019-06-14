@@ -2,7 +2,7 @@
 1. wget http://nginx.org/download/nginx-1.11.10.tar.gz
 2. tar xf nginx-1.5.6.tar.gz
 3. cd nginx-1.5.6
-4. ./configure --prefix=/usr/local/nginx \       如需要进行sockte访问则可以进行./configure  --prefix=/usr/local/nginx --with-stream 
+4. ./configure --prefix=/usr/local/nginx \       如需要进行sockte访问则可以进行./configure  --prefix=/usr/local/nginx --with-stream (可能报错，解决方法：1.yum -y install pcre-devel      2.yum -y install openssl openssl-devel)
 5. make && make install
 6. cd /usr/local/nginx
 7. ./nginx   运行nginx  
