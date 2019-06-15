@@ -83,3 +83,9 @@ server {
 4. cd /usr/local/nginx/sbin
 5. ./nginx
 6. 访问网站：http://ip：8000/Cauchy <--这里是你django urls.py文件中的路径
+# 安装Django(包含了channels,定时任务等)
+1. pip install Django
+2. pip install pymysql
+3. pip install channels
+4. pip install -U channels_redis
+5. pip install apscheduler==2.1.2
