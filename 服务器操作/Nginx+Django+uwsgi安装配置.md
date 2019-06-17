@@ -89,6 +89,10 @@ server {
 3. pip install channels
 4. pip install -U channels_redis
 5. pip install apscheduler==2.1.2
+6. pip install daphne==2.2
+7. pip install channels==2.0
+8. pip install channels-redis==2.3.1
+9. pip isstall (具体名忘了叫ASGI什么) == 2.3.2
 # 安装Redis
 https://www.cnblogs.com/lauhp/p/8487029.html
 # 安装Daphne(聊天室,发送推送等等功能)
