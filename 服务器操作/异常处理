@@ -1,0 +1,4 @@
+## 环境变量出错(command not found)
+### export PATH=$HOME/bin:/usr/local/bin:$PATH
+### export PATH=$HOME/bin:/usr/local/python3/bin:/usr/local/bin:$PATH
+### source ~/.bash_profile
