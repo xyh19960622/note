@@ -17,7 +17,8 @@ firewall-cmd --reload
 firewall-cmd --query-port=80/tcp
 ### 关闭防火墙
 systemctl stop firewalld.service
-
+### 清空日志
+cat /dev/null > test.log
 ## uwsig常用命令
 ### uwsgi重启进程ID
 uwsgi --reload uwsgi/uwsgi.pid
