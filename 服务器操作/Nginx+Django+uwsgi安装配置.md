@@ -5,7 +5,8 @@
 4. ./configure --prefix=/usr/local/nginx \       如需要进行sockte访问则可以进行./configure  --prefix=/usr/local/nginx --with-stream (可能报错，解决方法：1.yum -y install pcre-devel      2.yum -y install openssl openssl-devel)
 5. make && make install
 6. cd /usr/local/nginx
-7. ./nginx   运行nginx  
+7. 
+8. ./nginx   运行nginx  
 > `错误处理 :如第7步没有任何反应，则说明启动成功，直接访问：你的ip  会弹出Welcome to nginx  否则检查80端口是否开启，nginx默认端口是80`
 8. 附：端口永久开启: `firewall-cmd --zone=public --add-port=80/tcp --permanent ` 重启防火墙: `firewall-cmd --reload`  查看端口是否开启 `firewall-cmd --query-port=80/tcp`
 # 安装uwsgi
