@@ -1,28 +1,15 @@
-def debug(func):
-    def wrapper(*args, **kwargs):  # 指定宇宙无敌参数
-        print("[DEBUG]: enter {}()".format(func.__name__))
-        print('Prepare and say...')
-        return func(*args, **kwargs)
-    return wrapper  # 返回
+import time
 
-@debug
-def say(something,a,b):
-    print("hello {}!".format(something))
+def singelton(cls):
+    instance ={}
+    def warpper(*args,**kwargs):
+        if cls not in instance:
+            instance[cls] = cls(*args,**kwargs)
+        return instance[cls]
+    return warpper
 
-def singontong(func): 
-    def wrapper(*args,**kwargs):
-        print("方法名：{}".format(func.__name__))
-        print(**kwargs)
-        print("prepare and say...")
-        return func(*args,**kwargs)
-    return wrapper
-
-@singontong
-def fun_name(arg1,arg2,arg3):
-    print("123")
-
+@singelton
+def Foo():
+    pass
 if __name__ == '__main__':
-    # d = {"s":1,"z":2}
-    # fun_name("xx",'a',d)
-    print(int(7/3))
-
+    print([x for x in filter(lambda x: x % 2 == 0, range(10))])

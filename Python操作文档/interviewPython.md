@@ -280,7 +280,7 @@
 ```python
     def get_lines():
         l = []
-        with open('file.txt','rb) as f:
+        with open('file.txt','rb') as f:
             for eachline in f:
                 l.append(eachline)
             return l

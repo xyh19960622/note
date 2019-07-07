@@ -1,1 +1,0 @@
-cmd_/home/xyh/webrtc/node-v10.13.0/out/Release/obj.target/tools/icu/libicustubdata.a := rm -f /home/xyh/webrtc/node-v10.13.0/out/Release/obj.target/tools/icu/libicustubdata.a && ar crsT /home/xyh/webrtc/node-v10.13.0/out/Release/obj.target/tools/icu/libicustubdata.a /home/xyh/webrtc/node-v10.13.0/out/Release/obj.target/icustubdata/deps/icu-small/source/stubdata/stubdata.o
